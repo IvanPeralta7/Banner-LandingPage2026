@@ -8,3 +8,6 @@ desktop.ini
 # Secretos (por si se agregan después)
 .env
 .env.*
+
+# Solo uso local (no subir al repo)
+servidor.bat
