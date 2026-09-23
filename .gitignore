@@ -1,0 +1,10 @@
+# Archivos del sistema / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Secretos (por si se agregan después)
+.env
+.env.*

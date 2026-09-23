@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- ────────────────────────────────────────────────────────
+       METADATOS
+       Configuración básica del documento: codificación,
+       viewport para mobile, título de pestaña.
+  ─────────────────────────────────────────────────────────── -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Instructivo banner director</title>
+
+  <!-- ────────────────────────────────────────────────────────
+       FUENTES
+       Montserrat — misma familia que v2.bannerdirector.com (Vuetify)
+  ─────────────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#151211" />
+
+  <!-- ────────────────────────────────────────────────────────
+       HOJA DE ESTILOS
+       Todos los estilos visuales están en este archivo externo.
+  ─────────────────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="estilos.css?v=4" />
+</head>
+
+<body>
+
+  <!-- Modal: instructivos de gestión de contenido (Paso 04) -->
+  <div class="modal-gestion" id="modal-gestion-contenido" role="dialog" aria-modal="true" aria-labelledby="modal-gestion-titulo" hidden>
+    <div class="modal-gestion__overlay" data-cerrar-modal tabindex="-1" aria-hidden="true"></div>
+    <div class="modal-gestion__panel" role="document">
+      <button type="button" class="modal-gestion__cerrar" data-cerrar-modal aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <p class="modal-gestion__etiqueta">CONFIGURACIÓN AVANZADA</p>
+      <h3 class="modal-gestion__titulo" id="modal-gestion-titulo">Instructivo de gestión de contenido</h3>
+      <div class="modal-gestion__intro">
+        <p class="modal-gestion__descripcion">Aqui te dejamos algunos instructivos utiles.</p>
+        <p class="modal-gestion__descripcion">Si deseas ver aun mas funciones, estos mismos links te dirigen a una playlist con mas videos.</p>
+      </div>
+      <div class="modal-gestion__links">
+        <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=vikYO0Flqvc&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=2" target="_blank" rel="noopener">
+          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-texto">Editor online de contenido</span>
+          <span class="bienvenida__link-tipo">VIDEO</span>
+        </a>
+        <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=Y3z76WknM4A&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=4" target="_blank" rel="noopener">
+          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-texto">Uso de etiquetas dinamicas </span>
+          <span class="bienvenida__link-tipo">VIDEO</span>
+        </a>
+        <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=RIGzDtI2WKI&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=6" target="_blank" rel="noopener">
+          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-texto">Agregar condiciones de reproducción (por fecha, horarios, ubicacion, etc)</span>
+          <span class="bienvenida__link-tipo">VIDEO</span>
+        </a>
+        <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=TWACyKMZDX8&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=10" target="_blank" rel="noopener">
+          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-texto">Añadir colaborades para la gestion de tu contenido</span>
+          <span class="bienvenida__link-tipo">VIDEO</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECCIÓN HERO
+       Primera pantalla visible al ingresar. Contiene el logo,
+       el mensaje principal de bienvenida y el botón de acceso
+       a los pasos de instalación.
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+
+    <!-- Pastilla de estado que aparece sobre el título -->
+    <div class="hero__badge">
+      <span class="hero__badge-punto"></span>
+      Tu equipo está listo para funcionar
+    </div>
+
+    <!-- Texto pequeño encima del título -->
+    <p class="hero__subtitulo-superior">Guía de inicio rápido</p>
+
+    <!-- Título principal del hero -->
+    <h1 class="hero__titulo">
+      Banner<br>
+      <span class="hero__titulo-acento">Director</span>
+    </h1>
+
+    <!-- Párrafo de bienvenida y propósito de la página -->
+    <p class="hero__descripcion">
+      Gracias por elegirnos. En esta página encontrás todo lo que necesitás
+      para poner en marcha tu equipo de cartelería digital!
+    </p>
+
+    <!-- Botón principal que lleva a los pasos de instalación -->
+    <a href="#bienvenida" class="hero__boton">
+      Ver instructivos
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 3L13 8L8 13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- Indicador animado de scroll, solo decorativo -->
+    <div class="hero__indicador-scroll" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+  </section>
+
+  <!-- Línea separadora entre secciones -->
+  <hr class="separador" />
+
+
+  <!-- ══════════════════════════════════════════════════════
+       SECCIÓN BIENVENIDA — PASOS DE INSTALACIÓN
+       Cada tarjeta representa un paso del proceso y contiene
+       los links directos a los instructivos correspondientes.
+
+       ESTRUCTURA DE CADA TARJETA:
+       · .bienvenida__paso-numero  → número de orden del paso
+       · .bienvenida__icono        → emoji representativo
+       · .bienvenida__nombre       → título del paso
+       · .bienvenida__texto        → descripción breve
+       · .bienvenida__links        → contenedor de links/botones
+         └── .bienvenida__link     → link individual a un instructivo
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="seccion" id="bienvenida">
+
+    <!-- Encabezado de sección -->
+    <div class="aparecer">
+      <p class="seccion__etiqueta">PASOS DE INSTALACIÓN</p>
+      <h2 class="seccion__titulo">Todo en un solo lugar</h2>
+      <p class="seccion__descripcion">
+        Seguí los pasos en orden y tu pantalla estará configurada en minutos.
+        Cada paso tiene sus instructivos listos para descargar o consultar.
+      </p>
+    </div>
+
+    <!-- Grilla de tarjetas de pasos -->
+    <div class="bienvenida__grilla aparecer">
+
+
+      <!-- ══ TARJETA 1: Verificar contenido ══════════════════ -->
+      <div class="bienvenida__tarjeta">
+
+        <!-- Encabezado de la tarjeta -->
+        <div class="bienvenida__tarjeta-cabecera">
+          <span class="bienvenida__paso-numero">Paso 01</span>
+          <div class="bienvenida__icono">📦</div>
+        </div>
+
+        <div class="bienvenida__nombre">Verificá el contenido</div>
+        <p class="bienvenida__texto">
+          Antes de comenzar, revisá que el equipo y todos sus accesorios
+          estén presentes en la caja.
+        </p>
+
+        <!-- Links de instructivos del paso 1 -->
+        <div class="bienvenida__links">
+          <a class="bienvenida__link bienvenida__link--pdf" href="" target="_blank" rel="noopener">
+            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-texto">D3 - Lista de componentes</span>
+            <span class="bienvenida__link-tipo">PDF</span>
+          </a>
+          <a class="bienvenida__link bienvenida__link--pdf" href="https://drive.google.com/drive/folders/1rxmvtvpjL1Uy0ZwaJrgNLnoilt5rbU_K" target="_blank" rel="noopener">
+            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-texto">D3 - Instructivo de uso - Control remoto Air Mouse</span>
+            <span class="bienvenida__link-tipo">PDF</span>
+          </a>
+        </div>
+        <div class="bienvenida__links">
+          <a class="bienvenida__link bienvenida__link--pdf" href=" " target="_blank" rel="noopener">
+            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-texto">EBD - Lista de componentes</span>
+            <span class="bienvenida__link-tipo">PDF</span>
+          </a>
+        </div>
+
+      </div><!-- /tarjeta 1 -->
+
+
+      <!-- ══ TARJETA 2: Conectar hardware ════════════════════
+           Contiene un selector de modelo de equipo, ya que
+           existen dos dispositivos con instructivos distintos. -->
+      <div class="bienvenida__tarjeta">
+
+        <!-- Encabezado de la tarjeta -->
+        <div class="bienvenida__tarjeta-cabecera">
+          <span class="bienvenida__paso-numero">Paso 02</span>
+          <div class="bienvenida__icono">🔌</div>
+        </div>
+
+        <div class="bienvenida__nombre">Conectá el hardware</div>
+        <p class="bienvenida__texto">
+          Seleccioná tu modelo de equipo para acceder al instructivo
+          de instalación física correspondiente.
+        </p>
+
+        <!-- Selector de modelo de equipo -->
+        <div class="bienvenida__links" id="links-conexion-equipos">
+
+          <p class="bienvenida__links-titulo">¿Cuál es tu equipo?</p>
+
+          <a class="bienvenida__boton-equipo" href="" target="_blank" rel="noopener">
+            <span class="bienvenida__boton-equipo-icono">🖥️</span>
+            <div class="bienvenida__boton-equipo-info">
+              <span class="bienvenida__boton-equipo-nombre">EBD</span>
+              <span class="bienvenida__boton-equipo-desc">FALTA INSTRUCTIVO</span>
+            </div>
+            <span class="bienvenida__boton-equipo-flecha">→</span>
+          </a>
+
+          <a class="bienvenida__boton-equipo" href="https://youtu.be/h2t5zKvEAXE?si=3VnzKokA5uX7OjPe" target="_blank" rel="noopener">
+            <span class="bienvenida__boton-equipo-icono">📺</span>
+            <div class="bienvenida__boton-equipo-info">
+              <span class="bienvenida__boton-equipo-nombre">D3</span>
+              <span class="bienvenida__boton-equipo-desc">Ver instructivo de instalación</span>
+            </div>
+            <span class="bienvenida__boton-equipo-flecha">→</span>
+          </a>
+
+        </div>
+
+      </div><!-- /tarjeta 2 -->
+
+
+      <!-- ══ TARJETA 3: Configurar software ══════════════════ -->
+      <div class="bienvenida__tarjeta">
+
+        <!-- Encabezado de la tarjeta -->
+        <div class="bienvenida__tarjeta-cabecera">
+          <span class="bienvenida__paso-numero">Paso 03</span>
+          <div class="bienvenida__icono">💻</div>
+        </div>
+
+        <div class="bienvenida__nombre">Configurá el software</div>
+        <p class="bienvenida__texto">
+          Accedé a la plataforma de gestión y configurá tu equipo
+          desde cualquier dispositivo.
+        </p>
+
+        <!-- Links de instructivos del paso 3 -->
+        <div class="bienvenida__links">
+          <a class="bienvenida__link bienvenida__link--web" href="https://www.youtube.com/watch?si=omDBZW5pNY7lv-kH&v=WUUuD3XrdL4&feature=youtu.be" target="_blank" rel="noopener">
+            <span class="bienvenida__link-icono">🌐</span>
+            <span class="bienvenida__link-texto"> Paso 1 - Da de alta tu equipo</span>
+            <span class="bienvenida__link-tipo">VIDEO</span>
+          </a>
+
+
+          <a class="bienvenida__link bienvenida__link--web" href="https://v2.bannerdirector.com/login" target="_blank" rel="noopener">
+            <span class="bienvenida__link-icono">🌐</span>
+            <span class="bienvenida__link-texto"> Paso 2 - Acceder a la plataforma</span>
+            <span class="bienvenida__link-tipo">WEB</span>
+          </a>
+
+          <a class="bienvenida__link bienvenida__link--pdf" href="https://www.youtube.com/watch?v=vE6cVndR944&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=1" target="_blank" rel="noopener">
+            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-texto"> Paso 3 - Mostra tu primer contenido</span>
+            <span class="bienvenida__link-tipo">VIDEO</span>
+          </a>
+
+        </div>
+
+      </div><!-- /tarjeta 3 -->
+
+      <!-- ══ TARJETA 4: Empezar a transmitir ═════════════════ -->
+      <div class="bienvenida__tarjeta">
+
+        <!-- Encabezado de la tarjeta -->
+        <div class="bienvenida__tarjeta-cabecera">
+          <span class="bienvenida__paso-numero">Paso 04</span>
+          <div class="bienvenida__icono">🚀</div>
+        </div>
+
+        <div class="bienvenida__nombre">Configuración avanzada</div>
+        <p class="bienvenida__texto">
+          En este punto tu equipo ya esta mostrando contenido. Ahora podes configurarlo para que muestre de la manera que quieras, agregando etiquetas, criterios de reproducción y mucho más.
+        </p>
+
+        <!-- Links de instructivos del paso 4 -->
+        <div class="bienvenida__links">
+
+          <button type="button" class="bienvenida__link bienvenida__link--video" id="abrir-modal-gestion-contenido" aria-haspopup="dialog" aria-controls="modal-gestion-contenido">
+            <span class="bienvenida__link-icono">▶️</span>
+            <span class="bienvenida__link-texto">Instructivo de gestion de contenido</span>
+            <span class="bienvenida__link-tipo">VIDEO</span>
+          </button>
+
+
+        </div>
+
+      </div><!-- /tarjeta 4 -->
+
+
+    </div><!-- /bienvenida__grilla -->
+
+  </section>
+
+  <hr class="separador" />
+
+
+  <!-- ══════════════════════════════════════════════════════
+       SECCIÓN SOPORTE
+       Datos de contacto del equipo técnico para consultas
+       que no se resuelvan con los instructivos.
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="seccion" id="soporte">
+
+    <!-- Encabezado de sección -->
+    <div class="aparecer">
+      <p class="seccion__etiqueta">¿NECESITÁS AYUDA?</p>
+      <h2 class="seccion__titulo">Contacto de soporte</h2>
+      <p class="seccion__descripcion">
+        Si los instructivos no resolvieron tu consulta, nuestro equipo
+        está disponible para ayudarte.
+      </p>
+    </div>
+
+    <!-- Tarjeta de contacto -->
+    <div class="soporte__contenedor aparecer">
+
+      <!-- Horario de atención -->
+      <p class="soporte__horario">
+        Horario de atención:
+        <strong class="soporte__horario-valor">Lunes a viernes, 9:00 a 21:00 hs.</strong>
+      </p>
+
+      <!-- Grilla de medios de contacto -->
+      <div class="soporte__grilla">
+
+        <!-- Ítem: Correo electrónico -->
+        <div class="soporte__item">
+          <div class="soporte__icono">📧</div>
+          <div>
+            <div class="soporte__etiqueta">Correo electrónico</div>
+            <div class="soporte__valor">
+              <a href="mailto:soporte@tuempresa.com">logistica@bannerdirector.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ítem: Sitio web -->
+        <div class="soporte__item">
+          <div class="soporte__icono">🌐</div>
+          <div>
+            <div class="soporte__etiqueta">Sitio web</div>
+            <div class="soporte__valor">
+              <a href="https://soporte-bannerdirector.com/" target="_blank" rel="noopener">
+                Chat personalizado para consultas de soporte 
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /soporte__grilla -->
+
+    </div><!-- /soporte__contenedor -->
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       PIE DE PÁGINA
+       Copyright y tagline de la empresa.
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="pie">
+
+    <!-- El año se inserta automáticamente por JavaScript -->
+    <p>
+      &copy; <span id="anio-actual"></span>
+      <strong class="pie__empresa">Banner Director</strong>.
+      Todos los derechos reservados.
+    </p>
+
+    <p class="pie__subtexto">
+      Cartelería digital · Soporte técnico
+    </p>
+
+  </footer>
+
+
+  <!-- ────────────────────────────────────────────────────────
+       SCRIPT PRINCIPAL
+       Se carga al final del body para no bloquear el renderizado
+       del HTML.
+  ─────────────────────────────────────────────────────────── -->
+  <script src="funcionalidades.js?v=4"></script>
+
+</body>
+</html>

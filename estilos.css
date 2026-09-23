@@ -1,0 +1,1014 @@
+/* ============================================================
+   ARCHIVO: estilos.css
+   DESCRIPCIÓN: Estilos alineados con v2.bannerdirector.com
+   (Vuetify 3 / Material 3, tema oscuro).
+   ============================================================ */
+
+
+/* ────────────────────────────────────────────────────────────
+   TOKENS DE DISEÑO
+   Variables CSS globales que controlan la paleta de colores,
+   tipografías, bordes y transiciones de toda la página.
+   ──────────────────────────────────────────────────────────── */
+:root {
+  /*
+   * Tokens alineados con v2.bannerdirector.com (Vuetify 3, tema oscuro Material 3)
+   * Referencia: --v-theme-* del login en producción
+   */
+
+  /* Fondos */
+  --color-fondo:           #151211;    /* background */
+  --color-fondo-profundo:  #0F0D0C;    /* background-deep */
+  --color-superficie:      #1C1817;    /* surface */
+  --color-superficie-alt:  #221E1C;    /* surface-variant */
+  --color-input:           #262221;    /* inputs / bloques internos */
+  --color-borde:           #383331;    /* border */
+  --color-borde-suave:     #4F4542;    /* outline-variant */
+
+  /* Primary (coral / salmón) */
+  --color-acento:          #FFB5A0;
+  --color-acento-tenue:    #FFB5A01F;
+  --color-acento-contenedor:#472619;   /* primary-container */
+  --color-sobre-acento:    #601400;    /* on-primary — texto en botones primary */
+  --color-sobre-acento-cont:#FFDBD1;   /* on-primary-container */
+
+  /* Texto */
+  --color-texto:           #EDE0DD;    /* on-background / on-surface */
+  --color-texto-suave:     #D8C2BC;    /* on-surface-variant */
+  --color-texto-atenuado:  #999594;    /* outline */
+  --color-blanco:          #EDE0DD;
+
+  /* Semánticos (PDF / error, aviso) */
+  --color-error:           #FF5555;
+  --color-advertencia:     #FB8C00;
+
+  /* Tipografía única como en la plataforma */
+  --fuente-titulos:        'Montserrat', sans-serif;
+  --fuente-cuerpo:         'Montserrat', sans-serif;
+
+  /* Radios — tarjetas M3 / Vuetify rounded-lg */
+  --radio-tarjeta:         16px;
+  --radio-boton:           12px;
+  --radio-enlace:          10px;
+
+  --transicion:            0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout responsive */
+  --padding-pagina-x:      clamp(1rem, 4.5vw, 1.5rem);
+  --altura-toque-min:      44px;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   RESET Y BASE
+   Normalización de estilos por defecto del navegador.
+   ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.25rem;
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ────────────────────────────────────────────────────────────
+   CANVAS DE ANIMACIÓN DEL HERO
+   El canvas ocupa todo el hero y sirve de fondo animado.
+   Se posiciona de forma absoluta sin capturar eventos del mouse.
+   ──────────────────────────────────────────────────────────── */
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* no interfiere con clics ni gestos */
+  opacity: 0.35;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SECCIÓN HERO
+   Primera sección visible al ingresar. Ocupa la pantalla
+   completa y contiene el mensaje principal de bienvenida.
+   ──────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100dvh; /* altura dinámica de viewport, respeta barras móviles */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding:
+    max(1.5rem, env(safe-area-inset-top, 0px))
+    var(--padding-pagina-x)
+    max(5rem, calc(env(safe-area-inset-bottom, 0px) + 3rem));
+  overflow: hidden;
+}
+
+/* Degradado inferior que suaviza la transición hacia la siguiente sección */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--color-fondo));
+  pointer-events: none;
+}
+
+/* Logo o nombre de la empresa en la parte superior del hero */
+.hero__logo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--color-blanco);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* Letra de acento dentro del logo */
+.hero__logo-acento {
+  color: var(--color-acento);
+}
+
+/* Pastilla indicadora de estado (ej: "Tu equipo está listo") */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-borde-suave);
+  border-radius: 100px;
+  padding: 0.35rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-sobre-acento-cont);
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+  background: var(--color-acento-contenedor);
+}
+
+/* Punto pulsante dentro del badge */
+.hero__badge-punto {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-acento);
+  animation: animacion-pulso 2s infinite;
+}
+
+/* Texto pequeño encima del título principal */
+.hero__subtitulo-superior {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-texto-atenuado);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Título principal del hero */
+.hero__titulo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-blanco);
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+/* Palabra resaltada con el color de acento dentro del título */
+.hero__titulo-acento {
+  color: var(--color-acento);
+}
+
+/* Párrafo descriptivo debajo del título */
+.hero__descripcion {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--color-texto-suave);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+/* Botón principal del hero que lleva a los instructivos */
+.hero__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-acento);
+  color: var(--color-sobre-acento);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radio-boton);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  transition: filter var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+}
+
+.hero__boton:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(255 181 160 / 0.25);
+}
+
+/* Indicador de scroll animado en la parte inferior del hero */
+.hero__indicador-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-texto-suave);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  animation: animacion-rebote 2.5s infinite;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   SEPARADOR HORIZONTAL
+   Línea divisoria entre secciones.
+   ──────────────────────────────────────────────────────────── */
+.separador {
+  border: none;
+  border-top: 1px solid var(--color-borde);
+  margin: 0 var(--padding-pagina-x);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   SECCIONES GENERALES
+   Estructura y espaciado comunes a todas las secciones
+   de contenido (bienvenida, instructivos, soporte).
+   ──────────────────────────────────────────────────────────── */
+.seccion {
+  padding: clamp(3rem, 8vw, 5rem) var(--padding-pagina-x);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Etiqueta pequeña en mayúsculas que categoriza la sección */
+.seccion__etiqueta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-sobre-acento-cont);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+/* Título principal de cada sección */
+.seccion__titulo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-texto);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  max-width: 560px;
+}
+
+/* Descripción introductoria de cada sección */
+.seccion__descripcion {
+  color: var(--color-texto-suave);
+  font-size: clamp(0.95rem, 2.8vw, 1rem);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: clamp(2rem, 6vw, 3rem);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   GRILLA DE BIENVENIDA
+   Cuatro tarjetas que representan cada paso del proceso
+   de instalación. Cada una incluye links directos a los
+   instructivos correspondientes.
+   ──────────────────────────────────────────────────────────── */
+.bienvenida__grilla {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+/* Tarjeta individual de paso
+   Usa flex en columna para que el bloque de links quede
+   siempre pegado al fondo de la tarjeta (margin-top: auto) */
+.bienvenida__tarjeta {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.bienvenida__tarjeta:hover {
+  border-color: var(--color-borde-suave);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.35);
+}
+
+/* Cabecera de la tarjeta: número de paso + ícono en la misma fila */
+.bienvenida__tarjeta-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+/* Etiqueta de número de paso (ej: "Paso 01") */
+.bienvenida__paso-numero {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-sobre-acento-cont);
+  letter-spacing: 0.1em;
+  background: var(--color-acento-contenedor);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: 100px;
+  padding: 0.2rem 0.65rem;
+}
+
+/* Ícono emoji de la tarjeta */
+.bienvenida__icono {
+  font-size: 1.6rem;
+}
+
+/* Título de la tarjeta de paso */
+.bienvenida__nombre {
+  font-family: var(--fuente-titulos);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+/* Descripción breve de la tarjeta de paso */
+.bienvenida__texto {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  line-height: 1.6;
+  flex: 1; /* empuja el bloque de links hacia abajo */
+}
+
+/* ── Bloque de links dentro de cada tarjeta ──────────────── */
+
+/* Contenedor de todos los links de un paso.
+   margin-top: auto lo empuja al fondo de la tarjeta */
+.bienvenida__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+/* Título opcional encima de los botones de selección
+   (usado en la tarjeta 2 del selector de equipo) */
+.bienvenida__links-titulo {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+/* Link individual a un instructivo dentro de una tarjeta */
+.bienvenida__link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radio-enlace);
+  border: 1px solid var(--color-borde);
+  background: var(--color-input);
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--color-texto);
+  text-decoration: none;
+  transition: border-color var(--transicion), background var(--transicion), transform var(--transicion);
+}
+
+.bienvenida__link:hover {
+  border-color: var(--color-borde-suave);
+  background: var(--color-superficie-alt);
+  transform: translateX(3px);
+}
+
+/* Mismo aspecto que los links cuando el disparador es un botón */
+button.bienvenida__link {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Ícono del link (emoji) */
+.bienvenida__link-icono {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Texto descriptivo del link, ocupa el espacio disponible */
+.bienvenida__link-texto {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* Etiqueta de tipo de archivo (PDF / VIDEO / WEB) */
+.bienvenida__link-tipo {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+/* Variante: PDF */
+.bienvenida__link--pdf .bienvenida__link-tipo {
+  background: rgb(255 85 85 / 0.12);
+  color: #FFC2C2;
+  border: 1px solid rgb(255 85 85 / 0.35);
+}
+
+/* Variante: VIDEO */
+.bienvenida__link--video .bienvenida__link-tipo {
+  background: rgb(189 194 255 / 0.12);
+  color: #BDC2FF;
+  border: 1px solid rgb(189 194 255 / 0.35);
+}
+
+/* Variante: WEB */
+.bienvenida__link--web .bienvenida__link-tipo {
+  background: var(--color-acento-contenedor);
+  color: var(--color-sobre-acento-cont);
+  border: 1px solid var(--color-borde-suave);
+}
+
+/* ── Botones de selección de equipo (Tarjeta 2) ──────────── */
+
+/* Botón grande de selección: muestra el nombre del equipo
+   y lleva al instructivo de instalación correspondiente */
+.bienvenida__boton-equipo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radio-enlace);
+  border: 1px solid var(--color-borde);
+  background: var(--color-input);
+  text-decoration: none;
+  color: var(--color-texto);
+  transition: border-color var(--transicion), background var(--transicion), transform var(--transicion);
+  cursor: pointer;
+}
+
+.bienvenida__boton-equipo:hover {
+  border-color: var(--color-borde-suave);
+  background: var(--color-superficie-alt);
+  transform: translateX(3px);
+}
+
+/* Ícono grande a la izquierda del botón de equipo */
+.bienvenida__boton-equipo-icono {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+
+/* Bloque de texto (nombre + descripción) del botón de equipo */
+.bienvenida__boton-equipo-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+/* Nombre del modelo de equipo */
+.bienvenida__boton-equipo-nombre {
+  font-family: var(--fuente-titulos);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+/* Descripción corta debajo del nombre del equipo */
+.bienvenida__boton-equipo-desc {
+  font-size: 0.75rem;
+  color: var(--color-texto-suave);
+}
+
+/* Flecha a la derecha del botón de equipo */
+.bienvenida__boton-equipo-flecha {
+  flex-shrink: 0;
+  color: var(--color-acento);
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transicion), transform var(--transicion);
+}
+
+.bienvenida__boton-equipo:hover .bienvenida__boton-equipo-flecha {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* NOTA: los estilos de la sección "instructivos" fueron eliminados.
+   Los links a instructivos ahora viven dentro de cada tarjeta
+   de la sección "bienvenida" (ver bloque de arriba). */
+
+
+/* ── Modal: gestión de contenido (Paso 04) ───────────────── */
+
+.modal-gestion[hidden] {
+  display: none !important;
+}
+
+.modal-gestion {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.modal-gestion:not([hidden]) {
+  pointer-events: auto;
+}
+
+.modal-gestion__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgb(15 13 12 / 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity var(--transicion);
+}
+
+.modal-gestion__panel {
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: min(calc(100vw - 2 * var(--padding-pagina-x)), 32rem);
+  max-height: min(88vh, 40rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio-tarjeta);
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  box-shadow:
+    0 4px 24px rgb(0 0 0 / 0.35),
+    0 24px 64px rgb(0 0 0 / 0.5);
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 14px)) scale(0.97);
+  transition:
+    opacity var(--transicion),
+    transform var(--transicion),
+    border-color var(--transicion);
+}
+
+.modal-gestion__panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radio-tarjeta) var(--radio-tarjeta) 0 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-acento-contenedor) 0%,
+    var(--color-acento) 55%,
+    var(--color-sobre-acento-cont) 100%
+  );
+  opacity: 0.85;
+}
+
+.modal-gestion--visible .modal-gestion__overlay {
+  opacity: 1;
+}
+
+.modal-gestion--visible .modal-gestion__panel {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  border-color: var(--color-borde-suave);
+}
+
+.modal-gestion__cerrar {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--altura-toque-min);
+  height: var(--altura-toque-min);
+  padding: 0;
+  border: none;
+  border-radius: var(--radio-boton);
+  background: transparent;
+  color: var(--color-texto-suave);
+  cursor: pointer;
+  transition: color var(--transicion), background var(--transicion);
+}
+
+.modal-gestion__cerrar:hover {
+  color: var(--color-texto);
+  background: var(--color-input);
+}
+
+.modal-gestion__cerrar:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.modal-gestion__etiqueta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-sobre-acento-cont);
+  margin-bottom: 0.5rem;
+  padding-right: 2.5rem;
+}
+
+.modal-gestion__titulo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-texto);
+  margin-bottom: 0.65rem;
+  padding-right: 2rem;
+}
+
+.modal-gestion__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.modal-gestion__descripcion {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modal-gestion__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+body.modal-gestion-abierto {
+  overflow: hidden;
+  touch-action: none;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   SECCIÓN DE SOPORTE
+   Tarjeta con datos de contacto del equipo de soporte técnico.
+   ──────────────────────────────────────────────────────────── */
+
+/* Contenedor principal de la sección de soporte */
+.soporte__contenedor {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Texto de horario de atención */
+.soporte__horario {
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+}
+
+/* Valor resaltado dentro del horario */
+.soporte__horario-valor {
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+/* Grilla de ítems de contacto */
+.soporte__grilla {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Ítem individual de contacto (WhatsApp, mail, etc.) */
+.soporte__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radio-enlace);
+  border: 1px solid var(--color-borde);
+  background: var(--color-input);
+  transition: border-color var(--transicion), background var(--transicion);
+}
+
+.soporte__item:hover {
+  border-color: var(--color-borde-suave);
+  background: var(--color-superficie-alt);
+}
+
+/* Enlace dentro del ítem de soporte */
+.soporte__item a {
+  color: var(--color-texto);
+}
+
+/* Ícono del medio de contacto */
+.soporte__icono {
+  font-size: 1.3rem;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Etiqueta del tipo de contacto (ej: "WhatsApp") */
+.soporte__etiqueta {
+  font-size: 0.75rem;
+  color: var(--color-texto-suave);
+  margin-bottom: 0.1rem;
+}
+
+/* Valor del contacto (número, dirección, URL) */
+.soporte__valor {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-texto);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.soporte__valor a:hover {
+  color: var(--color-acento);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   PIE DE PÁGINA (FOOTER)
+   ──────────────────────────────────────────────────────────── */
+.pie {
+  border-top: 1px solid var(--color-borde);
+  padding:
+    2rem
+    max(var(--padding-pagina-x), env(safe-area-inset-right, 0px))
+    max(2rem, env(safe-area-inset-bottom, 0px))
+    max(var(--padding-pagina-x), env(safe-area-inset-left, 0px));
+  text-align: center;
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+  background: var(--color-fondo-profundo);
+}
+
+/* Nombre de empresa resaltado dentro del footer */
+.pie__empresa {
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+/* Segunda línea del footer */
+.pie__subtexto {
+  margin-top: 0.5rem;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   ANIMACIÓN DE APARICIÓN AL SCROLL
+   Los elementos con clase .aparecer arrancan invisibles
+   y se vuelven visibles cuando entran al viewport.
+   La clase .visible es añadida por JavaScript.
+   ──────────────────────────────────────────────────────────── */
+/* Siempre visible: no depende de JavaScript (evita secciones “fantasma”) */
+.aparecer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación suave opcional al entrar en pantalla */
+html.js-reveal .aparecer {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+html.js-reveal .aparecer:not(.visible) {
+  transform: translateY(12px);
+}
+
+html.js-reveal .aparecer.visible {
+  transform: translateY(0);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   ANIMACIONES GLOBALES (keyframes)
+   ──────────────────────────────────────────────────────────── */
+
+/* Pulso del punto verde en el badge del hero */
+@keyframes animacion-pulso {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Rebote del indicador de scroll */
+@keyframes animacion-rebote {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — TABLET (640px+)
+   Dos columnas en pasos; más aire en hero.
+   ──────────────────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .bienvenida__grilla {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — TABLET Y DESKTOP (768px+)
+   ──────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .soporte__grilla {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .soporte__horario-valor + .soporte__horario-valor {
+    margin-left: 0.35rem;
+  }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — MÓVIL (≤767px)
+   Vista principal al escanear QR en el celular.
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .hero {
+    justify-content: center;
+  }
+
+  .hero__badge {
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.4;
+    font-size: clamp(0.68rem, 3.2vw, 0.78rem);
+    padding: 0.45rem 0.85rem;
+  }
+
+  .hero__titulo {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+
+  .hero__descripcion {
+    margin-bottom: 2rem;
+  }
+
+  .hero__boton {
+    width: 100%;
+    max-width: 22rem;
+    justify-content: center;
+    min-height: var(--altura-toque-min);
+    padding: 0.9rem 1.25rem;
+  }
+
+  .hero__indicador-scroll {
+    bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .bienvenida__tarjeta {
+    align-items: flex-start;
+  }
+
+  .bienvenida__link {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
+
+  .bienvenida__link-tipo {
+    margin-left: auto;
+  }
+
+  .soporte__horario-valor {
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  .soporte__horario-valor:first-of-type {
+    margin-top: 0.5rem;
+  }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   DISPOSITIVOS TÁCTILES
+   Áreas mínimas ~44px (WCAG) y feedback sin hover.
+   ──────────────────────────────────────────────────────────── */
+@media (pointer: coarse) {
+  .hero__boton,
+  .bienvenida__link,
+  .bienvenida__boton-equipo,
+  .soporte__item {
+    min-height: var(--altura-toque-min);
+  }
+
+  .bienvenida__link {
+    padding: 0.75rem 0.9rem;
+  }
+
+  .bienvenida__boton-equipo {
+    padding: 0.9rem 1rem;
+  }
+
+  .bienvenida__boton-equipo-flecha {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (hover: none) {
+  .bienvenida__link:hover,
+  .bienvenida__boton-equipo:hover,
+  .bienvenida__tarjeta:hover,
+  .soporte__item:hover,
+  .hero__boton:hover {
+    transform: none;
+  }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   ACCESIBILIDAD — MOVIMIENTO REDUCIDO
+   Respeta la preferencia del sistema operativo del usuario
+   que solicita reducir animaciones (epilepsia, mareos, etc.).
+   ──────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .aparecer:not(.visible) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .aparecer,
+  html.js-reveal .aparecer {
+    transition: none;
+  }
+  .hero__indicador-scroll,
+  .hero__badge-punto {
+    animation: none;
+  }
+}
