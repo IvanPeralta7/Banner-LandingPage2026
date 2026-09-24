@@ -369,6 +369,7 @@ img {
   font-family: 'Material Symbols Rounded';
   font-weight: normal;
   font-style: normal;
+  margin-left: 0.80rem;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -549,7 +550,7 @@ button.bienvenida__link {
   font-family: 'Material Symbols Rounded';
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   content: 'router';
-  font-size: 1.75rem;
+  font-size: 3rem;
   color: var(--color-acento);
   display: inline-block;
   vertical-align: middle;
@@ -559,8 +560,8 @@ button.bienvenida__link {
 .bienvenida__boton-equipo-icono.--icono-d3-paso02::before {
   font-family: 'Material Symbols Rounded';
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  content: 'tablet';
-  font-size: 1.75rem;
+  content: 'mobile_3';
+  font-size: 3rem;
   color: var(--color-acento);
   display: inline-block;
   vertical-align: middle;
