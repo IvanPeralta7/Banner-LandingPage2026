@@ -13,18 +13,18 @@
 
   <!-- ────────────────────────────────────────────────────────
        FUENTES
-       Montserrat — misma familia que v2.bannerdirector.com (Vuetify)
+       Poppins (texto) · Material Symbols Rounded filled (iconos)
   ─────────────────────────────────────────────────────────── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,1,0&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#151211" />
 
   <!-- ────────────────────────────────────────────────────────
        HOJA DE ESTILOS
        Todos los estilos visuales están en este archivo externo.
   ─────────────────────────────────────────────────────────── -->
-  <link rel="stylesheet" href="estilos.css?v=4" />
+  <link rel="stylesheet" href="estilos.css?v=5" />
 </head>
 
 <body>
@@ -46,22 +46,22 @@
       </div>
       <div class="modal-gestion__links">
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=vikYO0Flqvc&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=2" target="_blank" rel="noopener">
-          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
           <span class="bienvenida__link-texto">Editor online de contenido</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=Y3z76WknM4A&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=4" target="_blank" rel="noopener">
-          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
           <span class="bienvenida__link-texto">Uso de etiquetas dinamicas </span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=RIGzDtI2WKI&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=6" target="_blank" rel="noopener">
-          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
           <span class="bienvenida__link-texto">Agregar condiciones de reproducción (por fecha, horarios, ubicacion, etc)</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=TWACyKMZDX8&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=10" target="_blank" rel="noopener">
-          <span class="bienvenida__link-icono">▶️</span>
+          <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
           <span class="bienvenida__link-texto">Añadir colaborades para la gestion de tu contenido</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
@@ -126,7 +126,7 @@
 
        ESTRUCTURA DE CADA TARJETA:
        · .bienvenida__paso-numero  → número de orden del paso
-       · .bienvenida__icono        → emoji representativo
+       · .bienvenida__icono        → icono representativo
        · .bienvenida__nombre       → título del paso
        · .bienvenida__texto        → descripción breve
        · .bienvenida__links        → contenedor de links/botones
@@ -154,7 +154,7 @@
         <!-- Encabezado de la tarjeta -->
         <div class="bienvenida__tarjeta-cabecera">
           <span class="bienvenida__paso-numero">Paso 01</span>
-          <div class="bienvenida__icono">📦</div>
+          <div class="bienvenida__icono"><span class="material-symbols-rounded" aria-hidden="true">inventory_2</span></div>
         </div>
 
         <div class="bienvenida__nombre">Verificá el contenido</div>
@@ -166,19 +166,19 @@
         <!-- Links de instructivos del paso 1 -->
         <div class="bienvenida__links">
           <a class="bienvenida__link bienvenida__link--pdf" href="" target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">picture_as_pdf</span>
             <span class="bienvenida__link-texto">D3 - Lista de componentes</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
           <a class="bienvenida__link bienvenida__link--pdf" href="https://drive.google.com/drive/folders/1rxmvtvpjL1Uy0ZwaJrgNLnoilt5rbU_K" target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">picture_as_pdf</span>
             <span class="bienvenida__link-texto">D3 - Instructivo de uso - Control remoto Air Mouse</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
         </div>
         <div class="bienvenida__links">
           <a class="bienvenida__link bienvenida__link--pdf" href=" " target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">picture_as_pdf</span>
             <span class="bienvenida__link-texto">EBD - Lista de componentes</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
@@ -195,7 +195,7 @@
         <!-- Encabezado de la tarjeta -->
         <div class="bienvenida__tarjeta-cabecera">
           <span class="bienvenida__paso-numero">Paso 02</span>
-          <div class="bienvenida__icono">🔌</div>
+          <div class="bienvenida__icono"><span class="material-symbols-rounded" aria-hidden="true">electrical_services</span></div>
         </div>
 
         <div class="bienvenida__nombre">Conectá el hardware</div>
@@ -210,7 +210,7 @@
           <p class="bienvenida__links-titulo">¿Cuál es tu equipo?</p>
 
           <a class="bienvenida__boton-equipo" href="" target="_blank" rel="noopener">
-            <span class="bienvenida__boton-equipo-icono">🖥️</span>
+            <span class="bienvenida__boton-equipo-icono -icono-ebd-paso02" aria-hidden="true"></span>
             <div class="bienvenida__boton-equipo-info">
               <span class="bienvenida__boton-equipo-nombre">EBD</span>
               <span class="bienvenida__boton-equipo-desc">FALTA INSTRUCTIVO</span>
@@ -219,7 +219,7 @@
           </a>
 
           <a class="bienvenida__boton-equipo" href="https://youtu.be/h2t5zKvEAXE?si=3VnzKokA5uX7OjPe" target="_blank" rel="noopener">
-            <span class="bienvenida__boton-equipo-icono">📺</span>
+            <span class="bienvenida__boton-equipo-icono --icono-d3-paso02" aria-hidden="true"></span>
             <div class="bienvenida__boton-equipo-info">
               <span class="bienvenida__boton-equipo-nombre">D3</span>
               <span class="bienvenida__boton-equipo-desc">Ver instructivo de instalación</span>
@@ -238,7 +238,7 @@
         <!-- Encabezado de la tarjeta -->
         <div class="bienvenida__tarjeta-cabecera">
           <span class="bienvenida__paso-numero">Paso 03</span>
-          <div class="bienvenida__icono">💻</div>
+          <div class="bienvenida__icono"><span class="material-symbols-rounded" aria-hidden="true">settings</span></div>
         </div>
 
         <div class="bienvenida__nombre">Configurá el software</div>
@@ -250,20 +250,20 @@
         <!-- Links de instructivos del paso 3 -->
         <div class="bienvenida__links">
           <a class="bienvenida__link bienvenida__link--web" href="https://www.youtube.com/watch?si=omDBZW5pNY7lv-kH&v=WUUuD3XrdL4&feature=youtu.be" target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono">🌐</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
             <span class="bienvenida__link-texto"> Paso 1 - Da de alta tu equipo</span>
             <span class="bienvenida__link-tipo">VIDEO</span>
           </a>
 
 
           <a class="bienvenida__link bienvenida__link--web" href="https://v2.bannerdirector.com/login" target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono">🌐</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">language</span>
             <span class="bienvenida__link-texto"> Paso 2 - Acceder a la plataforma</span>
             <span class="bienvenida__link-tipo">WEB</span>
           </a>
 
           <a class="bienvenida__link bienvenida__link--pdf" href="https://www.youtube.com/watch?v=vE6cVndR944&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=1" target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono">📄</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
             <span class="bienvenida__link-texto"> Paso 3 - Mostra tu primer contenido</span>
             <span class="bienvenida__link-tipo">VIDEO</span>
           </a>
@@ -278,7 +278,7 @@
         <!-- Encabezado de la tarjeta -->
         <div class="bienvenida__tarjeta-cabecera">
           <span class="bienvenida__paso-numero">Paso 04</span>
-          <div class="bienvenida__icono">🚀</div>
+          <div class="bienvenida__icono"><span class="material-symbols-rounded" aria-hidden="true">rocket_launch</span></div>
         </div>
 
         <div class="bienvenida__nombre">Configuración avanzada</div>
@@ -290,7 +290,7 @@
         <div class="bienvenida__links">
 
           <button type="button" class="bienvenida__link bienvenida__link--video" id="abrir-modal-gestion-contenido" aria-haspopup="dialog" aria-controls="modal-gestion-contenido">
-            <span class="bienvenida__link-icono">▶️</span>
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
             <span class="bienvenida__link-texto">Instructivo de gestion de contenido</span>
             <span class="bienvenida__link-tipo">VIDEO</span>
           </button>
@@ -339,7 +339,7 @@
 
         <!-- Ítem: Correo electrónico -->
         <div class="soporte__item">
-          <div class="soporte__icono">📧</div>
+          <div class="soporte__icono"><span class="material-symbols-rounded" aria-hidden="true">mail</span></div>
           <div>
             <div class="soporte__etiqueta">Correo electrónico</div>
             <div class="soporte__valor">
@@ -350,7 +350,7 @@
 
         <!-- Ítem: Sitio web -->
         <div class="soporte__item">
-          <div class="soporte__icono">🌐</div>
+          <div class="soporte__icono"><span class="material-symbols-rounded" aria-hidden="true">support_agent</span></div>
           <div>
             <div class="soporte__etiqueta">Sitio web</div>
             <div class="soporte__valor">
@@ -393,7 +393,7 @@
        Se carga al final del body para no bloquear el renderizado
        del HTML.
   ─────────────────────────────────────────────────────────── -->
-  <script src="funcionalidades.js?v=4"></script>
+  <script src="funcionalidades.js?v=5"></script>
 
 </body>
 </html>

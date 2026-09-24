@@ -43,8 +43,8 @@
   --color-advertencia:     #FB8C00;
 
   /* Tipografía única como en la plataforma */
-  --fuente-titulos:        'Montserrat', sans-serif;
-  --fuente-cuerpo:         'Montserrat', sans-serif;
+  --fuente-titulos:        'Poppins', sans-serif;
+  --fuente-cuerpo:         'Poppins', sans-serif;
 
   /* Radios — tarjetas M3 / Vuetify rounded-lg */
   --radio-tarjeta:         16px;
@@ -364,8 +364,31 @@ img {
   padding: 0.2rem 0.65rem;
 }
 
-/* Ícono emoji de la tarjeta */
+/* Material Symbols (filled, rounded) */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: var(--color-acento);
+}
+
+/* Ícono de la tarjeta de paso */
 .bienvenida__icono {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.bienvenida__icono .material-symbols-rounded {
   font-size: 1.6rem;
 }
 
@@ -438,10 +461,15 @@ button.bienvenida__link {
   cursor: pointer;
 }
 
-/* Ícono del link (emoji) */
+/* Ícono del link */
 .bienvenida__link-icono {
-  font-size: 1rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
+}
+
+.bienvenida__link-icono.material-symbols-rounded {
+  font-size: 1.25rem;
+  color: var(--color-sobre-acento-cont);
 }
 
 /* Texto descriptivo del link, ocupa el espacio disponible */
@@ -513,6 +541,29 @@ button.bienvenida__link {
   flex-shrink: 0;
   width: 40px;
   text-align: center;
+  line-height: 1;
+}
+
+/* EBD: dispositivo tipo router / caja con antena */
+.bienvenida__boton-equipo-icono.-icono-ebd-paso02::before {
+  font-family: 'Material Symbols Rounded';
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  content: 'router';
+  font-size: 1.75rem;
+  color: var(--color-acento);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* D3: pantalla alargada tipo tablet */
+.bienvenida__boton-equipo-icono.--icono-d3-paso02::before {
+  font-family: 'Material Symbols Rounded';
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  content: 'tablet';
+  font-size: 1.75rem;
+  color: var(--color-acento);
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Bloque de texto (nombre + descripción) del botón de equipo */
@@ -774,6 +825,11 @@ body.modal-gestion-abierto {
   width: 40px;
   text-align: center;
   flex-shrink: 0;
+  line-height: 1;
+}
+
+.soporte__icono .material-symbols-rounded {
+  font-size: 1.5rem;
 }
 
 /* Etiqueta del tipo de contacto (ej: "WhatsApp") */
