@@ -2,14 +2,9 @@
 <html lang="es">
 
 <head>
-  <!-- ────────────────────────────────────────────────────────
-       METADATOS
-       Configuración básica del documento: codificación,
-       viewport para mobile, título de pestaña.
-  ─────────────────────────────────────────────────────────── -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Instructivo banner director</title>
+  <title>Banner Director</title>
 
   <!-- ────────────────────────────────────────────────────────
        FUENTES
@@ -18,13 +13,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,1,0&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/favicon_naranja_fondo.png">
   <meta name="theme-color" content="#151211" />
 
   <!-- ────────────────────────────────────────────────────────
        HOJA DE ESTILOS
        Todos los estilos visuales están en este archivo externo.
   ─────────────────────────────────────────────────────────── -->
-  <link rel="stylesheet" href="estilos.css?v=5" />
+  <link rel="stylesheet" href="estilos.css?v=14" />
 </head>
 
 <body>
@@ -42,27 +38,31 @@
       <h3 class="modal-gestion__titulo" id="modal-gestion-titulo">Instructivo de gestión de contenido</h3>
       <div class="modal-gestion__intro">
         <p class="modal-gestion__descripcion">Aqui te dejamos algunos instructivos utiles.</p>
-        <p class="modal-gestion__descripcion">Si deseas ver aun mas funciones, estos mismos links te dirigen a una playlist con mas videos.</p>
       </div>
       <div class="modal-gestion__links">
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=vikYO0Flqvc&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=2" target="_blank" rel="noopener">
           <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
-          <span class="bienvenida__link-texto">Editor online de contenido</span>
+          <span class="bienvenida__link-texto">Agregar texto a tu contenido</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=Y3z76WknM4A&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=4" target="_blank" rel="noopener">
           <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
-          <span class="bienvenida__link-texto">Uso de etiquetas dinamicas </span>
+          <span class="bienvenida__link-texto">Asigna precios dinamicamente </span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=RIGzDtI2WKI&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=6" target="_blank" rel="noopener">
           <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
-          <span class="bienvenida__link-texto">Agregar condiciones de reproducción (por fecha, horarios, ubicacion, etc)</span>
+          <span class="bienvenida__link-texto">Reproduce tu contenido segun fecha, horario, ubicacion, y demas criterios</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
         <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=TWACyKMZDX8&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=10" target="_blank" rel="noopener">
           <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
-          <span class="bienvenida__link-texto">Añadir colaborades para la gestion de tu contenido</span>
+          <span class="bienvenida__link-texto">Añadi colaboradores para la gestion de tu contenido</span>
+          <span class="bienvenida__link-tipo">VIDEO</span>
+        </a>
+        <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/playlist?list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe" target="_blank" rel="noopener">
+          <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
+          <span class="bienvenida__link-texto">Playlist con mas videos</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
       </div>
@@ -77,34 +77,47 @@
   ═══════════════════════════════════════════════════════════ -->
   <section class="hero" id="inicio">
 
-    <!-- Pastilla de estado que aparece sobre el título -->
-    <div class="hero__badge">
-      <span class="hero__badge-punto"></span>
-      Tu equipo está listo para funcionar
+    <div class="hero__grupo hero__grupo--encabezado">
+      <!-- Pastilla de estado que aparece sobre el título -->
+      <div class="hero__badge">
+        <span class="hero__badge-punto"></span>
+        Tu equipo está listo para funcionar
+      </div>
+
+      <!-- Texto pequeño encima del título -->
+      <p class="hero__subtitulo-superior">Guía de inicio rápido</p>
     </div>
 
-    <!-- Texto pequeño encima del título -->
-    <p class="hero__subtitulo-superior">Guía de inicio rápido</p>
+    <div class="hero__grupo hero__grupo--marca">
+      <!-- Marca principal del hero (logo sin fondo) -->
+      <h1 class="hero__titulo">
+        <img
+          class="hero__titulo-logo"
+          src="assets/logo_en_negropng.png?v=1"
+          alt="Banner Director"
+          width="990"
+          height="263"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </h1>
+    </div>
 
-    <!-- Título principal del hero -->
-    <h1 class="hero__titulo">
-      Banner<br>
-      <span class="hero__titulo-acento">Director</span>
-    </h1>
+    <div class="hero__grupo hero__grupo--accion">
+      <!-- Párrafo de bienvenida y propósito de la página -->
+      <p class="hero__descripcion">
+        Gracias por elegirnos. En esta página encontrás todo lo que necesitás
+        para poner en marcha tu equipo de cartelería digital!
+      </p>
 
-    <!-- Párrafo de bienvenida y propósito de la página -->
-    <p class="hero__descripcion">
-      Gracias por elegirnos. En esta página encontrás todo lo que necesitás
-      para poner en marcha tu equipo de cartelería digital!
-    </p>
-
-    <!-- Botón principal que lleva a los pasos de instalación -->
-    <a href="#bienvenida" class="hero__boton">
-      Ver instructivos
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M8 3L13 8L8 13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+      <!-- Botón principal que lleva a los pasos de instalación -->
+      <a href="#bienvenida" class="hero__boton">
+        Comenzemos!
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 3L13 8L8 13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
 
     <!-- Indicador animado de scroll, solo decorativo -->
     <div class="hero__indicador-scroll" aria-hidden="true">
@@ -166,20 +179,24 @@
         <!-- Links de instructivos del paso 1 -->
         <div class="bienvenida__links">
           <a class="bienvenida__link bienvenida__link--pdf" href="" target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">mobile_3</span>
-            <span class="bienvenida__link-texto">D3 - Lista de componentes</span>
+            <span class="bienvenida__link-icono" aria-hidden="true">
+              <img class="bienvenida__link-icono-img" src="assets/D3_startup.png" alt="" width="32" height="48" decoding="async" />
+            </span>
+            <span class="bienvenida__link-texto">Digital Desk Display</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
           <a class="bienvenida__link bienvenida__link--pdf" href="https://drive.google.com/drive/folders/1rxmvtvpjL1Uy0ZwaJrgNLnoilt5rbU_K" target="_blank" rel="noopener">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">tv_remote</span>
-            <span class="bienvenida__link-texto">D3 - Instructivo de uso - Control remoto Air Mouse</span>
+            <span class="bienvenida__link-texto">Instructivo de uso - Control remoto Air Mouse</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
         </div>
         <div class="bienvenida__links">
           <a class="bienvenida__link bienvenida__link--pdf" href=" " target="_blank" rel="noopener">
-            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">router</span>
-            <span class="bienvenida__link-texto">EBD - Lista de componentes</span>
+            <span class="bienvenida__link-icono" aria-hidden="true">
+              <img class="bienvenida__link-icono-img" src="assets/cube_startup.png" alt="" width="48" height="48" decoding="async" />
+            </span>
+            <span class="bienvenida__link-texto">Equipo Banner Director</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
         </div>
@@ -200,8 +217,7 @@
 
         <div class="bienvenida__nombre">Conectá el hardware</div>
         <p class="bienvenida__texto">
-          Seleccioná tu modelo de equipo para acceder al instructivo
-          de instalación física correspondiente.
+          Seleccioná tu modelo de equipo para ver como se instala.
         </p>
 
         <!-- Selector de modelo de equipo -->
@@ -210,18 +226,32 @@
           <p class="bienvenida__links-titulo">¿Cuál es tu equipo?</p>
 
           <a class="bienvenida__boton-equipo" href="" target="_blank" rel="noopener">
-            <span class="bienvenida__boton-equipo-icono -icono-ebd-paso02" aria-hidden="true"></span>
+            <img
+              class="bienvenida__boton-equipo-icono"
+              src="assets/cube_startup.png"
+              alt=""
+              width="64"
+              height="49"
+              aria-hidden="true"
+            />
             <div class="bienvenida__boton-equipo-info">
-              <span class="bienvenida__boton-equipo-nombre">EBD</span>
-              <span class="bienvenida__boton-equipo-desc">FALTA INSTRUCTIVO</span>
+              <span class="bienvenida__boton-equipo-nombre">Equipo Banner Director</span>
+              <span class="bienvenida__boton-equipo-desc">Ver instructivo de instalación</span>
             </div>
             <span class="bienvenida__boton-equipo-flecha">→</span>
           </a>
 
           <a class="bienvenida__boton-equipo" href="https://youtu.be/h2t5zKvEAXE?si=3VnzKokA5uX7OjPe" target="_blank" rel="noopener">
-            <span class="bienvenida__boton-equipo-icono --icono-d3-paso02" aria-hidden="true"></span>
+            <img
+              class="bienvenida__boton-equipo-icono"
+              src="assets/D3_startup.png"
+              alt=""
+              width="43"
+              height="64"
+              aria-hidden="true"
+            />
             <div class="bienvenida__boton-equipo-info">
-              <span class="bienvenida__boton-equipo-nombre">D3</span>
+              <span class="bienvenida__boton-equipo-nombre">Digital Desk Display</span>
               <span class="bienvenida__boton-equipo-desc">Ver instructivo de instalación</span>
             </div>
             <span class="bienvenida__boton-equipo-flecha">→</span>
@@ -283,7 +313,7 @@
 
         <div class="bienvenida__nombre">Configuración avanzada</div>
         <p class="bienvenida__texto">
-          En este punto tu equipo ya esta mostrando contenido. Ahora podes configurarlo para que muestre de la manera que quieras, agregando etiquetas, criterios de reproducción y mucho más.
+          Si ya finalizaste los pasos anteriores y tu equipo esta mostrando el contenido, podes escalar un paso mas y usar las funciones avanzadas de nuestro software.
         </p>
 
         <!-- Links de instructivos del paso 4 -->
@@ -291,7 +321,7 @@
 
           <button type="button" class="bienvenida__link bienvenida__link--video" id="abrir-modal-gestion-contenido" aria-haspopup="dialog" aria-controls="modal-gestion-contenido">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
-            <span class="bienvenida__link-texto">Instructivo de gestion de contenido</span>
+            <span class="bienvenida__link-texto">Funcionalidades avanzadas</span>
             <span class="bienvenida__link-tipo">VIDEO</span>
           </button>
 
@@ -374,16 +404,30 @@
   ═══════════════════════════════════════════════════════════ -->
   <footer class="pie">
 
-    <!-- El año se inserta automáticamente por JavaScript -->
-    <p>
-      &copy; <span id="anio-actual"></span>
-      <strong class="pie__empresa">Banner Director</strong>.
-      Todos los derechos reservados.
-    </p>
+    <div class="pie__contenido">
 
-    <p class="pie__subtexto">
-      Cartelería digital · Soporte técnico
-    </p>
+      <img
+        class="pie__logo"
+        src="assets/logo_fondo_negro.jpeg"
+        alt="Banner Director"
+        width="180"
+        height="180"
+        decoding="async"
+      />
+
+      <!-- El año se inserta automáticamente por JavaScript -->
+      <p>
+        &copy; <span id="anio-actual"></span>
+        <strong class="pie__empresa">Banner Director</strong>.
+      </p>
+
+      <p class="pie__subtexto">
+        Cartelería digital
+      </p>
+
+      <a class="pie__inicio" href="#inicio">Volver al inicio</a>
+
+    </div>
 
   </footer>
 

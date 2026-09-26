@@ -124,13 +124,60 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
+  gap: clamp(2rem, 6vh, 4rem);
   padding:
-    max(1.5rem, env(safe-area-inset-top, 0px))
+    max(2.5rem, calc(env(safe-area-inset-top, 0px) + 1.25rem))
     var(--padding-pagina-x)
-    max(5rem, calc(env(safe-area-inset-bottom, 0px) + 3rem));
+    max(6rem, calc(env(safe-area-inset-bottom, 0px) + 4.5rem));
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* Bloques del hero: aire entre grupos, compacto dentro de cada uno */
+.hero__grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 36rem;
+}
+
+.hero__grupo--encabezado {
+  gap: clamp(1rem, 2.5vh, 1.5rem);
+}
+
+.hero__grupo--marca {
+  flex: 0 1 auto;
+  max-width: min(36rem, 92vw);
+}
+
+.hero__grupo--accion {
+  gap: clamp(2rem, 5vh, 3.25rem);
+  max-width: 520px;
+}
+
+/* Fondo halo a pantalla completa: la composición es panorámica y el centro es más oscuro */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(15 13 12 / 0.72) 0%,
+      rgb(21 18 17 / 0.42) 42%,
+      rgb(21 18 17 / 0.55) 100%
+    ),
+    url('assets/header_halo_startup.png') center / cover no-repeat;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Degradado inferior que suaviza la transición hacia la siguiente sección */
@@ -140,6 +187,7 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   height: 120px;
   background: linear-gradient(to bottom, transparent, var(--color-fondo));
   pointer-events: none;
@@ -172,7 +220,7 @@ img {
   font-weight: 600;
   color: var(--color-sobre-acento-cont);
   letter-spacing: 0.04em;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   background: var(--color-acento-contenedor);
 }
 
@@ -192,24 +240,22 @@ img {
   color: var(--color-texto-atenuado);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
-/* Título principal del hero */
+/* Marca principal del hero: el logo ocupa el lugar del título */
 .hero__titulo {
-  font-family: var(--fuente-titulos);
-  font-size: clamp(2.2rem, 8vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: var(--color-blanco);
-  max-width: 720px;
-  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 36rem;
+  min-width: 0;
+  margin: 0 auto;
+  line-height: 0;
 }
 
-/* Palabra resaltada con el color de acento dentro del título */
-.hero__titulo-acento {
-  color: var(--color-acento);
+.hero__titulo-logo {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Párrafo descriptivo debajo del título */
@@ -217,7 +263,7 @@ img {
   font-size: clamp(1rem, 2.5vw, 1.15rem);
   color: var(--color-texto-suave);
   max-width: 520px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto;
   line-height: 1.7;
 }
 
@@ -466,6 +512,19 @@ button.bienvenida__link {
 .bienvenida__link-icono {
   font-size: 1.25rem;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  min-height: 1.75rem;
+}
+
+.bienvenida__link-icono-img {
+  display: block;
+  width: auto;
+  height: 1.625rem;
+  max-width: 1.75rem;
+  object-fit: contain;
 }
 
 .bienvenida__link-icono.material-symbols-rounded {
@@ -536,35 +595,15 @@ button.bienvenida__link {
   transform: translateX(3px);
 }
 
-/* Ícono grande a la izquierda del botón de equipo */
+/* Imagen del equipo a la izquierda del botón (Paso 02) */
 .bienvenida__boton-equipo-icono {
-  font-size: 1.5rem;
   flex-shrink: 0;
-  width: 40px;
-  text-align: center;
-  line-height: 1;
-}
-
-/* EBD: dispositivo tipo router / caja con antena */
-.bienvenida__boton-equipo-icono.-icono-ebd-paso02::before {
-  font-family: 'Material Symbols Rounded';
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  content: 'router';
-  font-size: 3rem;
-  color: var(--color-acento);
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* D3: pantalla alargada tipo tablet */
-.bienvenida__boton-equipo-icono.--icono-d3-paso02::before {
-  font-family: 'Material Symbols Rounded';
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  content: 'mobile_3';
-  font-size: 3rem;
-  color: var(--color-acento);
-  display: inline-block;
-  vertical-align: middle;
+  width: auto;
+  height: 3.25rem;
+  max-width: 3.75rem;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 /* Bloque de texto (nombre + descripción) del botón de equipo */
@@ -870,6 +909,13 @@ body.modal-gestion-abierto {
   background: var(--color-fondo-profundo);
 }
 
+.pie__logo {
+  display: block;
+  width: min(6.25rem, 32vw);
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
 /* Nombre de empresa resaltado dentro del footer */
 .pie__empresa {
   color: var(--color-texto);
@@ -879,6 +925,27 @@ body.modal-gestion-abierto {
 /* Segunda línea del footer */
 .pie__subtexto {
   margin-top: 0.5rem;
+}
+
+.pie__inicio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-sobre-acento);
+  background: var(--color-acento);
+  border-radius: var(--radio-boton);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  transition: filter var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+}
+
+.pie__inicio:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(255 181 160 / 0.25);
 }
 
 
@@ -957,7 +1024,14 @@ html.js-reveal .aparecer.visible {
    ──────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .hero {
-    justify-content: center;
+    justify-content: space-evenly;
+    gap: clamp(1.75rem, 5vh, 2.75rem);
+    padding-top: max(2rem, env(safe-area-inset-top, 0px));
+    padding-bottom: max(5rem, calc(env(safe-area-inset-bottom, 0px) + 3.5rem));
+  }
+
+  .hero__grupo--accion {
+    gap: clamp(1.75rem, 4vh, 2.5rem);
   }
 
   .hero__badge {
@@ -966,14 +1040,6 @@ html.js-reveal .aparecer.visible {
     line-height: 1.4;
     font-size: clamp(0.68rem, 3.2vw, 0.78rem);
     padding: 0.45rem 0.85rem;
-  }
-
-  .hero__titulo {
-    font-size: clamp(2rem, 10vw, 2.75rem);
-  }
-
-  .hero__descripcion {
-    margin-bottom: 2rem;
   }
 
   .hero__boton {
