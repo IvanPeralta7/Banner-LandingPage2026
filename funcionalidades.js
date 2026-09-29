@@ -212,20 +212,19 @@
 
 
 /* ────────────────────────────────────────────────────────────
-   MODAL — INSTRUCTIVO DE GESTIÓN DE CONTENIDO (PASO 04)
-   Abre un diálogo con 5 enlaces a videos; se cierra con X,
-   clic fuera del panel o tecla Escape.
+   MODALES (PASO 03 y PASO 04)
+   Cada botón con data-abrir-modal abre el diálogo indicado.
+   Se cierra con X, clic fuera del panel o tecla Escape.
    ──────────────────────────────────────────────────────────── */
 (function () {
 
-  const botonAbrir = document.getElementById('abrir-modal-gestion-contenido');
-  const modal = document.getElementById('modal-gestion-contenido');
+  const botonesAbrir = document.querySelectorAll('[data-abrir-modal]');
 
-  if (!botonAbrir || !modal) {
+  if (!botonesAbrir.length) {
     return;
   }
 
-  const botonCerrar = modal.querySelector('.modal-gestion__cerrar');
+  let modalActivo = null;
   let elementoConFocoPrevio = null;
   let cerrando = false;
   let scrollAlAbrir = 0;
@@ -250,8 +249,13 @@
     window.scrollTo(0, scrollAlAbrir);
   }
 
-  function abrirModal() {
+  function abrirModal(modal) {
+    if (!modal || (modalActivo === modal && !modal.hidden)) {
+      return;
+    }
+
     cerrando = false;
+    modalActivo = modal;
     elementoConFocoPrevio = document.activeElement;
     bloquearScrollPagina();
     modal.hidden = false;
@@ -260,20 +264,27 @@
         modal.classList.add('modal-gestion--visible');
       });
     });
+
+    const botonCerrar = modal.querySelector('.modal-gestion__cerrar');
     if (botonCerrar) {
       botonCerrar.focus({ preventScroll: true });
     }
   }
 
   function cerrarModal() {
-    if (modal.hidden || cerrando) {
+    if (!modalActivo || modalActivo.hidden || cerrando) {
       return;
     }
+
+    const modal = modalActivo;
     cerrando = true;
     modal.classList.remove('modal-gestion--visible');
 
     window.setTimeout(function () {
       modal.hidden = true;
+      if (modalActivo === modal) {
+        modalActivo = null;
+      }
       desbloquearScrollPagina();
       cerrando = false;
       if (elementoConFocoPrevio && typeof elementoConFocoPrevio.focus === 'function') {
@@ -282,17 +293,24 @@
     }, 260);
   }
 
-  botonAbrir.addEventListener('click', function (evento) {
-    evento.preventDefault();
-    abrirModal();
-  });
+  botonesAbrir.forEach(function (boton) {
+    const modal = document.getElementById(boton.getAttribute('data-abrir-modal'));
+    if (!modal) {
+      return;
+    }
 
-  modal.querySelectorAll('[data-cerrar-modal]').forEach(function (elemento) {
-    elemento.addEventListener('click', cerrarModal);
+    boton.addEventListener('click', function (evento) {
+      evento.preventDefault();
+      abrirModal(modal);
+    });
+
+    modal.querySelectorAll('[data-cerrar-modal]').forEach(function (elemento) {
+      elemento.addEventListener('click', cerrarModal);
+    });
   });
 
   document.addEventListener('keydown', function (evento) {
-    if (evento.key === 'Escape' && !modal.hidden) {
+    if (evento.key === 'Escape' && modalActivo && !modalActivo.hidden) {
       cerrarModal();
     }
   });

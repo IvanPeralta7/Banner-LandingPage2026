@@ -789,6 +789,42 @@ button.bienvenida__link {
   margin: 0;
 }
 
+.modal-gestion__descripcion-lista-item {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-texto);
+}
+
+.modal-gestion__descripcion-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  margin: -0.1rem 0 0.1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.modal-gestion__descripcion-lista li {
+  position: relative;
+  padding-left: 0.95rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--color-texto-suave);
+}
+
+.modal-gestion__descripcion-lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: var(--color-acento);
+}
+
 .modal-gestion__links {
   display: flex;
   flex-direction: column;

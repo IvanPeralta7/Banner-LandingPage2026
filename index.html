@@ -20,10 +20,49 @@
        HOJA DE ESTILOS
        Todos los estilos visuales están en este archivo externo.
   ─────────────────────────────────────────────────────────── -->
-  <link rel="stylesheet" href="estilos.css?v=14" />
+  <link rel="stylesheet" href="estilos.css?v=15" />
 </head>
 
 <body>
+
+  <!-- Modal: primer contenido (Paso 03)
+       El texto de .modal-gestion__descripcion se edita a mano.
+       Podés agregar más párrafos con la misma clase. -->
+  <div class="modal-gestion" id="modal-primer-contenido" role="dialog" aria-modal="true" aria-labelledby="modal-primer-contenido-titulo" hidden>
+    <div class="modal-gestion__overlay" data-cerrar-modal tabindex="-1" aria-hidden="true"></div>
+    <div class="modal-gestion__panel" role="document">
+      <button type="button" class="modal-gestion__cerrar" data-cerrar-modal aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <p class="modal-gestion__etiqueta">PRIMER CONTENIDO</p>
+      <h3 class="modal-gestion__titulo" id="modal-primer-contenido-titulo">Mostrá tu primer contenido</h3>
+      <div class="modal-gestion__intro">
+        <p class="modal-gestion__descripcion">Especificaciones tecnicas</p>
+        <p class="modal-gestion__descripcion">Para que tu contenido se visualice correctamente en la pantalla, te recomendamos que los archivos que uses sigan las siguientes lineaciones:</p>
+        <p class="modal-gestion__descripcion-lista-item">Contenido vertical:</p>
+        <ul class="modal-gestion__descripcion-lista">
+          <li>Videos: Formato MP4</li>
+          <li>Imagenes: Formato JPG o PNG</li>
+          <li>Resolución: 1920 px de alto x 1080 de ancho</li>
+        </ul>
+        <p class="modal-gestion__descripcion-lista-item">Contenido horizontal:</p>
+        <ul class="modal-gestion__descripcion-lista">
+          <li>Videos: Formato MP4</li>
+          <li>Imagenes: Formato JPG o PNG</li>
+          <li>Resolución: 1080 px de alto x 1920 de ancho</li>
+        </ul>
+      </div>
+      <div class="modal-gestion__links">
+        <a class="bienvenida__link bienvenida__link--video" href="https://www.youtube.com/watch?v=vE6cVndR944&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=1" target="_blank" rel="noopener">
+          <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
+          <span class="bienvenida__link-texto">Instructivo para subir contenido</span>
+          <span class="bienvenida__link-tipo">VIDEO</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal: instructivos de gestión de contenido (Paso 04) -->
   <div class="modal-gestion" id="modal-gestion-contenido" role="dialog" aria-modal="true" aria-labelledby="modal-gestion-titulo" hidden>
@@ -178,21 +217,21 @@
 
         <!-- Links de instructivos del paso 1 -->
         <div class="bienvenida__links">
-          <a class="bienvenida__link bienvenida__link--pdf" href="" target="_blank" rel="noopener">
+          <a class="bienvenida__link bienvenida__link--pdf" href="/assets/Lista de componentes equipo digital desk display.pdf" target="_blank" rel="noopener">
             <span class="bienvenida__link-icono" aria-hidden="true">
               <img class="bienvenida__link-icono-img" src="assets/D3_startup.png" alt="" width="32" height="48" decoding="async" />
             </span>
             <span class="bienvenida__link-texto">Digital Desk Display</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
-          <a class="bienvenida__link bienvenida__link--pdf" href="https://drive.google.com/drive/folders/1rxmvtvpjL1Uy0ZwaJrgNLnoilt5rbU_K" target="_blank" rel="noopener">
+          <a class="bienvenida__link bienvenida__link--pdf" href="assets/Instructivo Air Mouse.pdf" target="_blank" rel="noopener">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">tv_remote</span>
             <span class="bienvenida__link-texto">Instructivo de uso - Control remoto Air Mouse</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
         </div>
         <div class="bienvenida__links">
-          <a class="bienvenida__link bienvenida__link--pdf" href=" " target="_blank" rel="noopener">
+          <a class="bienvenida__link bienvenida__link--pdf" href="/assets/Lista de componentes EBD.pdf" target="_blank" rel="noopener">
             <span class="bienvenida__link-icono" aria-hidden="true">
               <img class="bienvenida__link-icono-img" src="assets/cube_startup.png" alt="" width="48" height="48" decoding="async" />
             </span>
@@ -225,7 +264,7 @@
 
           <p class="bienvenida__links-titulo">¿Cuál es tu equipo?</p>
 
-          <a class="bienvenida__boton-equipo" href="" target="_blank" rel="noopener">
+          <a class="bienvenida__boton-equipo" href="assets/Instructivo Conexion EBD.pdf" target="_blank" rel="noopener">
             <img
               class="bienvenida__boton-equipo-icono"
               src="assets/cube_startup.png"
@@ -292,11 +331,11 @@
             <span class="bienvenida__link-tipo">WEB</span>
           </a>
 
-          <a class="bienvenida__link bienvenida__link--pdf" href="https://www.youtube.com/watch?v=vE6cVndR944&list=PL8O75K770v4oD3z9ikc8X8m7qNaIty9fe&index=1" target="_blank" rel="noopener">
+          <button type="button" class="bienvenida__link bienvenida__link--video" id="abrir-modal-primer-contenido" data-abrir-modal="modal-primer-contenido" aria-haspopup="dialog" aria-controls="modal-primer-contenido">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
             <span class="bienvenida__link-texto"> Paso 3 - Mostra tu primer contenido</span>
             <span class="bienvenida__link-tipo">VIDEO</span>
-          </a>
+          </button>
 
         </div>
 
@@ -319,7 +358,7 @@
         <!-- Links de instructivos del paso 4 -->
         <div class="bienvenida__links">
 
-          <button type="button" class="bienvenida__link bienvenida__link--video" id="abrir-modal-gestion-contenido" aria-haspopup="dialog" aria-controls="modal-gestion-contenido">
+          <button type="button" class="bienvenida__link bienvenida__link--video" id="abrir-modal-gestion-contenido" data-abrir-modal="modal-gestion-contenido" aria-haspopup="dialog" aria-controls="modal-gestion-contenido">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">play_circle</span>
             <span class="bienvenida__link-texto">Funcionalidades avanzadas</span>
             <span class="bienvenida__link-tipo">VIDEO</span>
@@ -437,7 +476,7 @@
        Se carga al final del body para no bloquear el renderizado
        del HTML.
   ─────────────────────────────────────────────────────────── -->
-  <script src="funcionalidades.js?v=5"></script>
+  <script src="funcionalidades.js?v=6"></script>
 
 </body>
 </html>
