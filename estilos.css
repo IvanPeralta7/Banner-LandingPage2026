@@ -839,6 +839,151 @@ body.modal-gestion-abierto {
   touch-action: none;
 }
 
+.modal-gestion__panel--carrusel {
+  width: min(calc(100vw - 2 * var(--padding-pagina-x)), 36rem);
+}
+
+.modal-gestion__carrusel {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+.modal-gestion__carrusel-viewport {
+  border-radius: var(--radio-enlace);
+  border: 1px solid var(--color-borde);
+  background: var(--color-input);
+  overflow: hidden;
+}
+
+.modal-gestion__carrusel-slide {
+  margin: 0;
+}
+
+.modal-gestion__carrusel-imagen {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(42vh, 16rem);
+  object-fit: contain;
+  background: rgb(0 0 0 / 0.25);
+}
+
+.modal-gestion__carrusel-descripcion {
+  padding: 0.85rem 1rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-texto-suave);
+  border-top: 1px solid var(--color-borde);
+}
+
+.modal-gestion__carrusel-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.modal-gestion__carrusel-flecha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--altura-toque-min);
+  height: var(--altura-toque-min);
+  padding: 0;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-boton);
+  background: var(--color-input);
+  color: var(--color-texto);
+  cursor: pointer;
+  transition: border-color var(--transicion), background var(--transicion);
+}
+
+.modal-gestion__carrusel-flecha:hover {
+  border-color: var(--color-borde-suave);
+  background: var(--color-superficie-alt);
+}
+
+.modal-gestion__carrusel-flecha:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.modal-gestion__carrusel-flecha .material-symbols-rounded {
+  font-size: 1.35rem;
+}
+
+.modal-gestion__carrusel-indicadores {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.modal-gestion__carrusel-punto {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-borde);
+  cursor: pointer;
+  transition: background var(--transicion), transform var(--transicion);
+}
+
+.modal-gestion__carrusel-punto[aria-selected='true'] {
+  background: var(--color-acento);
+  transform: scale(1.15);
+}
+
+.modal-gestion__carrusel-punto:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.modal-gestion__carrusel-contador {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-texto-suave);
+}
+
+.bienvenida__link--subpaso {
+  align-self: center;
+  width: auto;
+  max-width: calc(100% - 1.5rem);
+  margin-left: 0.80rem;
+  padding-left: 0.80rem;
+  border-left: 2px solid var(--color-acento);
+  background: linear-gradient(
+    145deg,
+    rgb(71 38 25 / 0.65) 0%,
+    var(--color-input) 55%
+  );
+  border-color: rgb(255 181 160 / 0.28);
+}
+
+.bienvenida__link--subpaso:hover {
+  border-color: rgb(255 181 160 / 0.45);
+  background: linear-gradient(
+    145deg,
+    rgb(71 38 25 / 0.78) 0%,
+    var(--color-superficie-alt) 55%
+  );
+}
+
+.bienvenida__link--subpaso .bienvenida__link-icono.material-symbols-rounded {
+  color: var(--color-acento);
+}
+
+.bienvenida__link--subpaso .bienvenida__link-tipo {
+  background: var(--color-acento-tenue);
+  color: var(--color-sobre-acento-cont);
+  border: 1px solid rgb(255 181 160 / 0.32);
+}
+
 
 /* ────────────────────────────────────────────────────────────
    SECCIÓN DE SOPORTE

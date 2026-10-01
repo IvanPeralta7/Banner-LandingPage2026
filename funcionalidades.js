@@ -316,3 +316,113 @@
   });
 
 })();
+
+
+/* ────────────────────────────────────────────────────────────
+   CARRUSEL EN MODALES
+   ──────────────────────────────────────────────────────────── */
+(function () {
+
+  const carruseles = document.querySelectorAll('[data-carrusel]');
+
+  if (!carruseles.length) {
+    return;
+  }
+
+  carruseles.forEach(function (raiz) {
+    const slides = raiz.querySelectorAll('[data-carrusel-slide]');
+    const btnPrev = raiz.querySelector('[data-carrusel-prev]');
+    const btnNext = raiz.querySelector('[data-carrusel-next]');
+    const contenedorIndicadores = raiz.querySelector('[data-carrusel-indicadores]');
+    const contador = raiz.querySelector('[data-carrusel-contador]');
+    let indice = 0;
+
+    if (!slides.length) {
+      return;
+    }
+
+    const puntos = [];
+
+    slides.forEach(function (_slide, i) {
+      const punto = document.createElement('button');
+      punto.type = 'button';
+      punto.className = 'modal-gestion__carrusel-punto';
+      punto.setAttribute('role', 'tab');
+      punto.setAttribute('aria-label', 'Imagen ' + (i + 1));
+      punto.addEventListener('click', function () {
+        irA(i);
+      });
+      if (contenedorIndicadores) {
+        contenedorIndicadores.appendChild(punto);
+      }
+      puntos.push(punto);
+    });
+
+    function irA(nuevoIndice) {
+      indice = (nuevoIndice + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        const activo = i === indice;
+        slide.hidden = !activo;
+        slide.setAttribute('aria-hidden', activo ? 'false' : 'true');
+      });
+      puntos.forEach(function (punto, i) {
+        punto.setAttribute('aria-selected', i === indice ? 'true' : 'false');
+      });
+      if (contador) {
+        contador.textContent = (indice + 1) + ' / ' + slides.length;
+      }
+    }
+
+    if (btnPrev) {
+      btnPrev.addEventListener('click', function () {
+        irA(indice - 1);
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener('click', function () {
+        irA(indice + 1);
+      });
+    }
+
+    const viewport = raiz.querySelector('.modal-gestion__carrusel-viewport');
+    let toqueInicioX = null;
+
+    if (viewport) {
+      viewport.addEventListener('touchstart', function (evento) {
+        if (evento.touches.length === 1) {
+          toqueInicioX = evento.touches[0].clientX;
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', function (evento) {
+        if (toqueInicioX === null || !evento.changedTouches.length) {
+          return;
+        }
+        const delta = evento.changedTouches[0].clientX - toqueInicioX;
+        toqueInicioX = null;
+        if (Math.abs(delta) < 40) {
+          return;
+        }
+        if (delta < 0) {
+          irA(indice + 1);
+        } else {
+          irA(indice - 1);
+        }
+      }, { passive: true });
+    }
+
+    const modal = raiz.closest('.modal-gestion');
+    if (modal) {
+      const botonAbrir = document.querySelector('[data-abrir-modal="' + modal.id + '"]');
+      if (botonAbrir) {
+        botonAbrir.addEventListener('click', function () {
+          irA(0);
+        });
+      }
+    }
+
+    irA(0);
+  });
+
+})();

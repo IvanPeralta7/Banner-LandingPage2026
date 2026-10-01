@@ -20,7 +20,7 @@
        HOJA DE ESTILOS
        Todos los estilos visuales están en este archivo externo.
   ─────────────────────────────────────────────────────────── -->
-  <link rel="stylesheet" href="estilos.css?v=15" />
+  <link rel="stylesheet" href="estilos.css?v=17" />
 </head>
 
 <body>
@@ -60,6 +60,51 @@
           <span class="bienvenida__link-texto">Instructivo para subir contenido</span>
           <span class="bienvenida__link-tipo">VIDEO</span>
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: subpaso Paso 1 — alta de equipo (Paso 03)
+       Editá etiqueta, título, intro y cada imagen/descripción del carrusel. -->
+  <div class="modal-gestion" id="modal-alta-equipo" role="dialog" aria-modal="true" aria-labelledby="modal-alta-equipo-titulo" hidden>
+    <div class="modal-gestion__overlay" data-cerrar-modal tabindex="-1" aria-hidden="true"></div>
+    <div class="modal-gestion__panel modal-gestion__panel--carrusel" role="document">
+      <button type="button" class="modal-gestion__cerrar" data-cerrar-modal aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <p class="modal-gestion__etiqueta">ALTA DE EQUIPOS</p>
+      <h3 class="modal-gestion__titulo" id="modal-alta-equipo-titulo">Si tenes mas de un equipo, te mostramos como registrarlos</h3>
+      <div class="modal-gestion__intro">
+        <p class="modal-gestion__descripcion">Para que puedas gestionar tus equipos de la misma cuenta, segui estas indicaciones.</p>
+        <p class="modal-gestion__descripcion">A partir del segundo equipo, repetí este paso con cada nuevo equipo que registres.</p>
+      </div>
+      <div class="modal-gestion__carrusel" data-carrusel aria-roledescription="carrusel">
+        <div class="modal-gestion__carrusel-viewport">
+          <figure class="modal-gestion__carrusel-slide" data-carrusel-slide>
+            <img class="modal-gestion__carrusel-imagen" src="assets/subpaso1.png" alt="" width="800" height="450" decoding="async" />
+            <figcaption class="modal-gestion__carrusel-descripcion">Al escanear el QR, el sistema te preguntara si tenes una cuenta o si queres crearla. Seleccion "Ya tengo una cuenta".</figcaption>
+          </figure>
+          <figure class="modal-gestion__carrusel-slide" data-carrusel-slide hidden>
+            <img class="modal-gestion__carrusel-imagen" src="assets/subpaso2.png" alt="" width="800" height="450" decoding="async" />
+            <figcaption class="modal-gestion__carrusel-descripcion">Aqui podras loguearte con el usuario y contraseña que creaste al registrar el primer equipo. </figcaption>
+          </figure>
+          <figure class="modal-gestion__carrusel-slide" data-carrusel-slide hidden>
+            <img class="modal-gestion__carrusel-imagen" src="assets/subpaso3.png" alt="" width="800" height="450" decoding="async" />
+            <figcaption class="modal-gestion__carrusel-descripcion">En esta pantalla, podras crear una nueva entidad o usar la que ya creaste al registrar el primer equipo. Selecciona "entidad existente", elegi la entidad creada en el registro del primer equipo y coloca el codigo numero de 6 digitos que te muestra el equipo.</figcaption>
+          </figure>
+        </div>
+        <div class="modal-gestion__carrusel-controles">
+          <button type="button" class="modal-gestion__carrusel-flecha" data-carrusel-prev aria-label="Imagen anterior">
+            <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
+          </button>
+          <div class="modal-gestion__carrusel-indicadores" data-carrusel-indicadores role="tablist" aria-label="Elegir imagen"></div>
+          <button type="button" class="modal-gestion__carrusel-flecha" data-carrusel-next aria-label="Imagen siguiente">
+            <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
+          </button>
+        </div>
+        <p class="modal-gestion__carrusel-contador" data-carrusel-contador aria-live="polite">1 / 3</p>
       </div>
     </div>
   </div>
@@ -324,6 +369,10 @@
             <span class="bienvenida__link-tipo">VIDEO</span>
           </a>
 
+          <button type="button" class="bienvenida__link bienvenida__link--subpaso" data-abrir-modal="modal-alta-equipo" aria-haspopup="dialog" aria-controls="modal-alta-equipo">
+            <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">photo_library</span>
+            <span class="bienvenida__link-texto">Si tenes que registrar mas de un equipo, te mostramos como hacerlo</span>
+          </button>
 
           <a class="bienvenida__link bienvenida__link--web" href="https://v2.bannerdirector.com/login" target="_blank" rel="noopener">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">language</span>
@@ -476,7 +525,7 @@
        Se carga al final del body para no bloquear el renderizado
        del HTML.
   ─────────────────────────────────────────────────────────── -->
-  <script src="funcionalidades.js?v=6"></script>
+  <script src="funcionalidades.js?v=7"></script>
 
 </body>
 </html>
