@@ -426,3 +426,103 @@
   });
 
 })();
+
+
+/* ────────────────────────────────────────────────────────────
+   ELECCIÓN DE EQUIPO
+   El usuario elige Digital Desk Display o Equipo Banner Director.
+   Luego se muestran solo los instructivos de ese modelo.
+   ──────────────────────────────────────────────────────────── */
+(function () {
+
+  const CLAVE_EQUIPO = 'equipoSeleccionado';
+  const NOMBRES_EQUIPO = {
+    desk: 'Digital Desk Display',
+    ebd: 'Equipo Banner Director'
+  };
+
+  const seccionEleccion = document.getElementById('eleccion-equipo');
+  const seccionPasos = document.getElementById('bienvenida');
+  const nombreEquipo = document.getElementById('nombre-equipo-actual');
+  const botonHero = document.getElementById('boton-hero-comenzar');
+  const botonCambiar = document.getElementById('cambiar-equipo');
+  const botonesElegir = document.querySelectorAll('[data-elegir-equipo]');
+
+  if (!seccionEleccion || !seccionPasos) {
+    return;
+  }
+
+  function leerEquipoGuardado() {
+    try {
+      return sessionStorage.getItem(CLAVE_EQUIPO);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function guardarEquipo(equipo) {
+    try {
+      if (equipo) {
+        sessionStorage.setItem(CLAVE_EQUIPO, equipo);
+      } else {
+        sessionStorage.removeItem(CLAVE_EQUIPO);
+      }
+    } catch (error) {}
+  }
+
+  function actualizarEnlaceHero(equipo) {
+    if (!botonHero) {
+      return;
+    }
+    botonHero.setAttribute('href', equipo ? '#bienvenida' : '#eleccion-equipo');
+  }
+
+  function aplicarEquipo(equipo, opciones) {
+    const valido = equipo === 'desk' || equipo === 'ebd';
+    const equipoActivo = valido ? equipo : null;
+
+    if (equipoActivo) {
+      document.body.dataset.equipo = equipoActivo;
+      if (nombreEquipo) {
+        nombreEquipo.textContent = NOMBRES_EQUIPO[equipoActivo];
+      }
+    } else {
+      delete document.body.dataset.equipo;
+      if (nombreEquipo) {
+        nombreEquipo.textContent = '';
+      }
+    }
+
+    guardarEquipo(equipoActivo);
+    actualizarEnlaceHero(equipoActivo);
+
+    if (opciones && opciones.desplazar) {
+      const destino = equipoActivo ? seccionPasos : seccionEleccion;
+      if (destino) {
+        if (destino.id) {
+          history.replaceState(null, '', '#' + destino.id);
+        }
+        destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  botonesElegir.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      aplicarEquipo(boton.getAttribute('data-elegir-equipo'), { desplazar: true });
+    });
+  });
+
+  if (botonCambiar) {
+    botonCambiar.addEventListener('click', function () {
+      aplicarEquipo(null, { desplazar: true });
+    });
+  }
+
+  aplicarEquipo(leerEquipoGuardado());
+
+  if (window.location.hash === '#bienvenida' && !document.body.dataset.equipo && seccionEleccion) {
+    seccionEleccion.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }
+
+})();

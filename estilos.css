@@ -643,6 +643,126 @@ button.bienvenida__link {
   transform: translateX(0);
 }
 
+/* ── Elección de equipo (después del hero) ──────────────── */
+
+/* Solo aplica si el HTML incluye la sección de elección (evita ocultar pasos con CSS cacheado) */
+body:not([data-equipo]):has(#eleccion-equipo) #bienvenida {
+  display: none;
+}
+
+body[data-equipo]:has(#eleccion-equipo) #eleccion-equipo {
+  display: none;
+}
+
+body[data-equipo="desk"] [data-equipo-contenido="ebd"],
+body[data-equipo="ebd"] [data-equipo-contenido="desk"] {
+  display: none !important;
+}
+
+button.bienvenida__tarjeta--eleccion {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.bienvenida__tarjeta--eleccion:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 3px;
+}
+
+.bienvenida__eleccion-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 13rem;
+  padding: 1.25rem 1rem;
+  background: #f3ece8;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-enlace);
+}
+
+.bienvenida__eleccion-foto img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  min-height: 9rem;
+  max-height: 12rem;
+  object-fit: contain;
+}
+
+.bienvenida__tarjeta--eleccion .bienvenida__texto {
+  flex: 0 1 auto;
+}
+
+.bienvenida__eleccion-cta {
+  margin-top: auto;
+  padding-top: 0.35rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-acento);
+}
+
+.seccion__descripcion:has(+ .bienvenida__cambio-equipo) {
+  margin-bottom: 1rem;
+}
+
+.bienvenida__cambio-equipo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  margin: 0 0 0.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-enlace);
+  background: var(--color-input);
+}
+
+.bienvenida__cambio-equipo-texto {
+  font-size: 0.83rem;
+  color: var(--color-texto-suave);
+  line-height: 1.4;
+}
+
+.bienvenida__cambio-equipo-texto strong {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+.bienvenida__cambio-equipo-boton {
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-sobre-acento);
+  background: var(--color-acento);
+  border: none;
+  border-radius: var(--radio-boton);
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  transition: filter var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+}
+
+.bienvenida__cambio-equipo-boton:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(255 181 160 / 0.25);
+}
+
+.bienvenida__cambio-equipo-boton:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
 
 /* NOTA: los estilos de la sección "instructivos" fueron eliminados.
    Los links a instructivos ahora viven dentro de cada tarjeta
@@ -1239,6 +1359,10 @@ html.js-reveal .aparecer.visible {
     align-items: flex-start;
   }
 
+  .bienvenida__cambio-equipo {
+    flex-wrap: wrap;
+  }
+
   .bienvenida__link {
     flex-wrap: wrap;
     row-gap: 0.35rem;
@@ -1267,6 +1391,7 @@ html.js-reveal .aparecer.visible {
   .hero__boton,
   .bienvenida__link,
   .bienvenida__boton-equipo,
+  .bienvenida__cambio-equipo-boton,
   .soporte__item {
     min-height: var(--altura-toque-min);
   }
@@ -1290,7 +1415,8 @@ html.js-reveal .aparecer.visible {
   .bienvenida__boton-equipo:hover,
   .bienvenida__tarjeta:hover,
   .soporte__item:hover,
-  .hero__boton:hover {
+  .hero__boton:hover,
+  .bienvenida__cambio-equipo-boton:hover {
     transform: none;
   }
 }

@@ -20,10 +20,20 @@
        HOJA DE ESTILOS
        Todos los estilos visuales están en este archivo externo.
   ─────────────────────────────────────────────────────────── -->
-  <link rel="stylesheet" href="estilos.css?v=17" />
+  <link rel="stylesheet" href="estilos.css?v=19" />
 </head>
 
 <body>
+  <script>
+    (function () {
+      try {
+        var equipo = sessionStorage.getItem('equipoSeleccionado');
+        if (equipo === 'desk' || equipo === 'ebd') {
+          document.body.dataset.equipo = equipo;
+        }
+      } catch (error) {}
+    })();
+  </script>
 
   <!-- Modal: primer contenido (Paso 03)
        El texto de .modal-gestion__descripcion se edita a mano.
@@ -194,8 +204,8 @@
         para poner en marcha tu equipo de cartelería digital!
       </p>
 
-      <!-- Botón principal que lleva a los pasos de instalación -->
-      <a href="#bienvenida" class="hero__boton">
+      <!-- Botón principal que lleva a la elección de equipo -->
+      <a href="#eleccion-equipo" class="hero__boton" id="boton-hero-comenzar">
         Comencemos!
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M8 3L13 8L8 13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -214,6 +224,68 @@
 
   <!-- Línea separadora entre secciones -->
   <hr class="separador" />
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ELECCIÓN DE EQUIPO
+       El usuario elige su modelo antes de ver los pasos.
+       Al seleccionar, se muestran solo los instructivos
+       de ese equipo.
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="seccion" id="eleccion-equipo">
+
+    <div class="aparecer">
+      <p class="seccion__etiqueta">ELEGÍ TU EQUIPO</p>
+      <h2 class="seccion__titulo">¿Cuál es tu equipo?</h2>
+      <p class="seccion__descripcion">
+        Seleccioná tu modelo para ver los pasos e instructivos
+        que corresponden a tu equipo.
+      </p>
+    </div>
+
+    <div class="bienvenida__grilla aparecer">
+
+      <button type="button" class="bienvenida__tarjeta bienvenida__tarjeta--eleccion" data-elegir-equipo="desk">
+        <div class="bienvenida__eleccion-foto">
+          <img
+            src="./assets/D3_startup.png"
+            alt="Digital Desk Display"
+            width="220"
+            height="330"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="bienvenida__nombre">Digital Desk Display</div>
+        <p class="bienvenida__texto">
+          Verificá componentes, instalá la pantalla y configurá el software.
+        </p>
+        <span class="bienvenida__eleccion-cta">Elegir este equipo →</span>
+      </button>
+
+      <button type="button" class="bienvenida__tarjeta bienvenida__tarjeta--eleccion" data-elegir-equipo="ebd">
+        <div class="bienvenida__eleccion-foto">
+          <img
+            src="./assets/cube_startup.png"
+            alt="Equipo Banner Director"
+            width="330"
+            height="250"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="bienvenida__nombre">Equipo Banner Director</div>
+        <p class="bienvenida__texto">
+          Verificá componentes, conectá el equipo y configurá el software.
+        </p>
+        <span class="bienvenida__eleccion-cta">Elegir este equipo →</span>
+      </button>
+
+    </div>
+
+  </section>
 
 
   <!-- ══════════════════════════════════════════════════════
@@ -239,6 +311,15 @@
         Seguí los pasos en orden y tu pantalla estará configurada en minutos.
         Cada paso tiene sus instructivos listos para descargar o consultar.
       </p>
+      <div class="bienvenida__cambio-equipo">
+        <p class="bienvenida__cambio-equipo-texto">
+          Equipo seleccionado:
+          <strong id="nombre-equipo-actual"></strong>
+        </p>
+        <button type="button" class="bienvenida__cambio-equipo-boton" id="cambiar-equipo">
+          Cambiar equipo
+        </button>
+      </div>
     </div>
 
     <!-- Grilla de tarjetas de pasos -->
@@ -260,23 +341,21 @@
           estén presentes en la caja.
         </p>
 
-        <!-- Links de instructivos del paso 1 -->
+        <!-- Links de instructivos del paso 1 (se filtran según el equipo elegido) -->
         <div class="bienvenida__links">
-          <a class="bienvenida__link bienvenida__link--pdf" href="/assets/Lista de componentes equipo digital desk display.pdf" target="_blank" rel="noopener">
+          <a class="bienvenida__link bienvenida__link--pdf" href="assets/Lista de componentes equipo digital desk display.pdf" target="_blank" rel="noopener" data-equipo-contenido="desk">
             <span class="bienvenida__link-icono" aria-hidden="true">
               <img class="bienvenida__link-icono-img" src="assets/D3_startup.png" alt="" width="32" height="48" decoding="async" />
             </span>
             <span class="bienvenida__link-texto">Digital Desk Display</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
-          <a class="bienvenida__link bienvenida__link--pdf" href="assets/Instructivo Air Mouse.pdf" target="_blank" rel="noopener">
+          <a class="bienvenida__link bienvenida__link--pdf" href="assets/Instructivo Air Mouse.pdf" target="_blank" rel="noopener" data-equipo-contenido="desk">
             <span class="bienvenida__link-icono material-symbols-rounded" aria-hidden="true">tv_remote</span>
             <span class="bienvenida__link-texto">Instructivo de uso - Control remoto Air Mouse</span>
             <span class="bienvenida__link-tipo">PDF</span>
           </a>
-        </div>
-        <div class="bienvenida__links">
-          <a class="bienvenida__link bienvenida__link--pdf" href="/assets/Lista de componentes EBD.pdf" target="_blank" rel="noopener">
+          <a class="bienvenida__link bienvenida__link--pdf" href="assets/Lista de componentes EBD.pdf" target="_blank" rel="noopener" data-equipo-contenido="ebd">
             <span class="bienvenida__link-icono" aria-hidden="true">
               <img class="bienvenida__link-icono-img" src="assets/cube_startup.png" alt="" width="48" height="48" decoding="async" />
             </span>
@@ -288,9 +367,7 @@
       </div><!-- /tarjeta 1 -->
 
 
-      <!-- ══ TARJETA 2: Conectar hardware ════════════════════
-           Contiene un selector de modelo de equipo, ya que
-           existen dos dispositivos con instructivos distintos. -->
+      <!-- ══ TARJETA 2: Conectar hardware ════════════════════ -->
       <div class="bienvenida__tarjeta">
 
         <!-- Encabezado de la tarjeta -->
@@ -301,15 +378,13 @@
 
         <div class="bienvenida__nombre">Conectá el hardware</div>
         <p class="bienvenida__texto">
-          Seleccioná tu modelo de equipo para ver como se instala.
+          Seguí el instructivo de instalación de tu equipo.
         </p>
 
-        <!-- Selector de modelo de equipo -->
+        <!-- Instructivo de conexión del equipo elegido -->
         <div class="bienvenida__links" id="links-conexion-equipos">
 
-          <p class="bienvenida__links-titulo">¿Cuál es tu equipo?</p>
-
-          <a class="bienvenida__boton-equipo" href="assets/Instructivo de conexion EBD.pdf" target="_blank" rel="noopener">
+          <a class="bienvenida__boton-equipo" href="assets/Instructivo de conexion EBD.pdf" target="_blank" rel="noopener" data-equipo-contenido="ebd">
             <img
               class="bienvenida__boton-equipo-icono"
               src="assets/cube_startup.png"
@@ -325,7 +400,7 @@
             <span class="bienvenida__boton-equipo-flecha">→</span>
           </a>
 
-          <a class="bienvenida__boton-equipo" href="https://youtu.be/h2t5zKvEAXE?si=3VnzKokA5uX7OjPe" target="_blank" rel="noopener">
+          <a class="bienvenida__boton-equipo" href="https://youtu.be/h2t5zKvEAXE?si=3VnzKokA5uX7OjPe" target="_blank" rel="noopener" data-equipo-contenido="desk">
             <img
               class="bienvenida__boton-equipo-icono"
               src="assets/D3_startup.png"
@@ -525,7 +600,7 @@
        Se carga al final del body para no bloquear el renderizado
        del HTML.
   ─────────────────────────────────────────────────────────── -->
-  <script src="funcionalidades.js?v=7"></script>
+  <script src="funcionalidades.js?v=9"></script>
 
 </body>
 </html>
