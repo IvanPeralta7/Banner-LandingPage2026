@@ -172,7 +172,7 @@ img {
       rgb(21 18 17 / 0.42) 42%,
       rgb(21 18 17 / 0.55) 100%
     ),
-    url('assets/header_halo_startup.png') center / cover no-repeat;
+    url('assets/header_halo_startup.webp') center / cover no-repeat;
 }
 
 .hero > * {
